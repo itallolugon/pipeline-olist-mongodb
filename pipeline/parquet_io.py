@@ -47,4 +47,22 @@ def gravar(df: DataFrame, destino: Path, particao: str | None = None) -> int:
 
 
 def ler(origem: Path) -> DataFrame:
-    return get_spark().read.parquet(str(origem))
+    """Lê o Parquet com o PyArrow e entrega ao Spark como DataFrame.
+
+    O leitor de Parquet do próprio Spark lista a pasta pela biblioteca nativa do Hadoop,
+    que no Windows exige o winutils.exe/hadoop.dll. Lendo pelo PyArrow isso não é preciso.
+    As pastas coluna=valor do particionamento viram coluna de novo.
+    """
+    import pyarrow as pa
+
+    partes = []
+    for arquivo in sorted(origem.rglob("*.parquet")):
+        tabela = pq.ParquetFile(str(arquivo)).read()
+        for pasta in arquivo.relative_to(origem).parent.parts:  # ex.: ano_mes=2017-10
+            coluna, valor = pasta.split("=", 1)
+            valor = None if valor == "__HIVE_DEFAULT_PARTITION__" else valor
+            tabela = tabela.append_column(coluna, pa.array([valor] * tabela.num_rows, pa.string()))
+        partes.append(tabela)
+    if not partes:
+        raise FileNotFoundError(f"Nenhum Parquet em {origem}. Rode a etapa de limpeza primeiro.")
+    return get_spark().createDataFrame(pa.concat_tables(partes))
