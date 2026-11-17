@@ -1,6 +1,6 @@
 # Saídas do pipeline Olist → MongoDB
 
-Gerado em 17/11/2026 17:17, banco `olist`.
+Gerado em 17/11/2026 17:18, banco `olist`.
 
 ## 0. Documentos carregados
 
@@ -32,13 +32,13 @@ db.pedidos.aggregate([
 
 | Mês | Pedidos | Faturamento (R$) |
 |---|---|---|
-| 2017-11 | 7.431 | 1.005.910,22 |
-| 2018-01 | 7.191 | 946.085,37 |
-| 2018-03 | 7.167 | 981.413,15 |
-| 2018-04 | 6.915 | 992.385,49 |
-| 2018-05 | 6.832 | 993.876,63 |
+| 2017-11 | 7.423 | 1.003.862,14 |
+| 2018-01 | 7.187 | 945.456,29 |
+| 2018-03 | 7.168 | 981.051,06 |
+| 2018-04 | 6.919 | 993.592,98 |
+| 2018-05 | 6.833 | 992.871,75 |
 
-Dia com mais pedidos: **24/11/2017** (1.154 pedidos, Black Friday).
+Dia com mais pedidos: **24/11/2017** (1.176 pedidos, Black Friday).
 
 ## 3. Categorias mais vendidas
 
@@ -93,19 +93,19 @@ Dos 96.096 clientes únicos, **2.997** fizeram mais de um pedido (3,1%).
   "status": "delivered",
   "datas": {
     "compra": {
-      "$date": "2017-10-02T07:56:33Z"
+      "$date": "2017-10-02T10:56:33Z"
     },
     "aprovacao": {
-      "$date": "2017-10-02T08:07:15Z"
+      "$date": "2017-10-02T11:07:15Z"
     },
     "envio_transportadora": {
-      "$date": "2017-10-04T16:55:00Z"
+      "$date": "2017-10-04T19:55:00Z"
     },
     "entrega_cliente": {
-      "$date": "2017-10-10T18:25:13Z"
+      "$date": "2017-10-10T21:25:13Z"
     },
     "entrega_estimada": {
-      "$date": "2017-10-17T22:00:00Z"
+      "$date": "2017-10-18T00:00:00Z"
     }
   },
   "cliente": {
@@ -128,7 +128,7 @@ Dos 96.096 clientes únicos, **2.997** fizeram mais de um pedido (3,1%).
         "$numberDecimal": "8.72"
       },
       "data_limite_envio": {
-        "$date": "2017-10-06T08:07:15Z"
+        "$date": "2017-10-06T11:07:15Z"
       }
     }
   ],
@@ -164,10 +164,10 @@ Dos 96.096 clientes únicos, **2.997** fizeram mais de um pedido (3,1%).
       "nota": 4,
       "comentario": "Não testei o produto ainda, mas ele veio correto e em boas condições. Apenas a caixa que veio bem amassada e danificada, o que ficará chato, pois se trata de um presente.",
       "data_criacao": {
-        "$date": "2017-10-10T21:00:00Z"
+        "$date": "2017-10-11T00:00:00Z"
       },
       "data_resposta": {
-        "$date": "2017-10-12T00:43:48Z"
+        "$date": "2017-10-12T03:43:48Z"
       }
     }
   ],

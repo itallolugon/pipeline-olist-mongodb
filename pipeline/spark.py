@@ -18,6 +18,8 @@ def get_spark() -> SparkSession:
             .appName("pipeline-olist-mongodb")
             .master("local[*]")
             .config("spark.sql.session.timeZone", "UTC")
+            # datas sem fuso: o horário fica exatamente como no arquivo, em qualquer computador
+            .config("spark.sql.timestampType", "TIMESTAMP_NTZ")
             .config("spark.sql.shuffle.partitions", "8")
             # valor inválido vira nulo (e vai para rejeitados) em vez de derrubar a execução
             .config("spark.sql.ansi.enabled", "false")
