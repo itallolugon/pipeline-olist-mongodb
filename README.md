@@ -104,6 +104,7 @@ python main.py
 Leva uns 2 minutos. Outras formas:
 
 ```bash
+python main.py limpeza                  # atalho: da limpeza em diante, sem baixar de novo
 python main.py --etapa carga            # roda só uma etapa
 python main.py --a-partir-de agregados  # roda desta etapa em diante
 python main.py --origem C:\Downloads\olist   # usa CSV já baixados (zip do Kaggle extraído)

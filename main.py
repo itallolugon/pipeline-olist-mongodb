@@ -3,6 +3,7 @@
 Uso:
     python main.py                      # roda tudo: captura, limpeza, agregados, carga e análises
     python main.py --etapa carga        # roda só uma etapa
+    python main.py limpeza              # atalho: da limpeza em diante (sem baixar de novo)
     python main.py --origem C:/csv      # usa CSV já baixados em vez de baixar
 """
 import argparse
@@ -16,6 +17,8 @@ ETAPAS = ["captura", "limpeza", "agregados", "carga", "analises"]
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Pipeline Olist -> MongoDB")
+    ap.add_argument("comecar", nargs="?", choices=ETAPAS, metavar="ETAPA",
+                    help="atalho: executa desta etapa em diante (ex.: python main.py limpeza)")
     ap.add_argument("--etapa", choices=ETAPAS, help="executa só esta etapa")
     ap.add_argument("--a-partir-de", choices=ETAPAS, dest="inicio", help="executa desta etapa em diante")
     ap.add_argument("--origem", help="pasta com os 9 CSV já baixados (pula o download)")
@@ -23,8 +26,8 @@ def main() -> int:
 
     if args.etapa:
         etapas = [args.etapa]
-    elif args.inicio:
-        etapas = ETAPAS[ETAPAS.index(args.inicio):]
+    elif args.inicio or args.comecar:
+        etapas = ETAPAS[ETAPAS.index(args.inicio or args.comecar):]
     else:
         etapas = ETAPAS
 
