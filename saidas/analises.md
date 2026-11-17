@@ -1,6 +1,6 @@
 # Saídas do pipeline Olist → MongoDB
 
-Gerado em 17/11/2026 17:08, banco `olist`.
+Gerado em 17/11/2026 17:12, banco `olist`.
 
 ## 0. Documentos carregados
 

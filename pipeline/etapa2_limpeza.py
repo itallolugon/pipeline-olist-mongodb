@@ -166,11 +166,14 @@ def executar() -> dict:
     tr_raw = _ler_csv("product_category_name_translation.csv",
                       ["product_category_name", "product_category_name_english"])
     rel["linhas_lidas"]["traducao_categorias"] = tr_raw.count()
-    complemento = get_spark().createDataFrame(
-        [("pc_gamer", "pc_gamer"),
-         ("portateis_cozinha_e_preparadores_de_alimentos", "portable_kitchen_and_food_preparers"),
-         ("sem_categoria", "no_category")],
-        ["product_category_name", "product_category_name_english"])
+    # Criado em SQL (só na JVM). Um createDataFrame a partir de lista do Python abriria um
+    # processo worker do Python, que quebra no Windows com Python 3.14.
+    complemento = get_spark().sql("""
+        SELECT * FROM VALUES
+          ('pc_gamer', 'pc_gamer'),
+          ('portateis_cozinha_e_preparadores_de_alimentos', 'portable_kitchen_and_food_preparers'),
+          ('sem_categoria', 'no_category')
+        AS t(product_category_name, product_category_name_english)""")
     traducao = tr_raw.unionByName(complemento).dropDuplicates(["product_category_name"])
     produtos = (pr_raw
                 .withColumn("product_category_name", F.coalesce("product_category_name", F.lit("sem_categoria")))
