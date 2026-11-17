@@ -1,0 +1,48 @@
+{
+  "origem": "/home/claude/pipeline-olist-mongodb/data/raw/2026-11-17",
+  "linhas_lidas": {
+    "clientes": 99441,
+    "geolocalizacao": 1000163,
+    "pedidos": 99441,
+    "itens": 112650,
+    "pagamentos": 103886,
+    "avaliacoes": 99224,
+    "produtos": 32951,
+    "traducao_categorias": 71,
+    "vendedores": 3095
+  },
+  "linhas_gravadas": {
+    "clientes": 99441,
+    "geolocalizacao": 19010,
+    "pedidos": 99441,
+    "itens": 112650,
+    "pagamentos": 103886,
+    "avaliacoes": 99224,
+    "produtos": 32951,
+    "vendedores": 3095
+  },
+  "regras": {
+    "cep_cliente_sem_zero_a_esquerda": 23995,
+    "geolocalizacao_linhas_duplicadas_removidas": 261831,
+    "pedidos_sem_data_entrega_cliente": 2965,
+    "pagamentos_suspeitos_valor_ou_parcela_zero": 11,
+    "review_id_ligado_a_mais_de_um_pedido": 789,
+    "produtos_sem_categoria": 610,
+    "categorias_sem_traducao_complementadas": 2,
+    "clientes_sem_coordenada": 280,
+    "vendedores_sem_coordenada": 8,
+    "pedidos_sem_itens": 775,
+    "pedidos_sem_pagamento": 1,
+    "itens_sem_pedido": 0,
+    "pedidos_pagamento_diferente_de_itens_mais_frete": 323
+  },
+  "rejeitados": {
+    "clientes": 0,
+    "pedidos": 0,
+    "itens": 0,
+    "pagamentos": 0,
+    "avaliacoes": 0,
+    "produtos": 0,
+    "vendedores": 0
+  }
+}

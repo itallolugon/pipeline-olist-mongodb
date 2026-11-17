@@ -1,0 +1,11 @@
+# Sobe um MongoDB local para o pipeline (opcional, se você não tiver o MongoDB instalado)
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongo-olist
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-olist-data:/data/db
+volumes:
+  mongo-olist-data:
