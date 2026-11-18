@@ -6,6 +6,8 @@ Implementação do pipeline de ingestão especificado na N2, usando o
 
 **Equipe:** Hevelyn Leivas, Itallo Lugon, João Miguel e Maisa Carolliny
 
+**Entrega:** 17/11/2026
+
 ---
 
 ## O que o pipeline faz
